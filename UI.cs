@@ -129,47 +129,47 @@ namespace ConsoleApp4
                         return indexRet;
                     }
                 }
-                if (consoleKey == ConsoleKey.DownArrow)
-                {
-                    indexY++;
-                    if (menu[indexY, indexX] is null)
-                    {
-                        indexY--;
-                    }
-                }
-                else if (consoleKey == ConsoleKey.UpArrow)
-                {
-                    indexY--;
-                    if(indexY<0)
-                    {
-                        indexY++;
-                    }
-                    else if (menu[indexY, indexX] is null)
-                    {
-                        indexY++;
-                    }
-                }
 
-                if(consoleKey == ConsoleKey.RightArrow)
+                switch (consoleKey)
                 {
-                    indexX++;
-                    if (menu[indexY, indexX] is null)
-                    {
+                    case ConsoleKey.LeftArrow:
                         indexX--;
-                    }
-                }
-                else if(consoleKey == ConsoleKey.LeftArrow)
-                {
-                    indexX--;
-                    if (indexX < 0)
-                    {
+                        if (indexX < 0)
+                        {
+                            indexX++;
+                        }
+                        else if (menu[indexY, indexX] is null)
+                        {
+                            indexX++;
+                        }
+                        break;
+                    case ConsoleKey.RightArrow:
                         indexX++;
-                    }
-                    else if (menu[indexY, indexX] is null)
-                    {
-                        indexX++;
-                    }
+                        if (menu[indexY, indexX] is null)
+                        {
+                            indexX--;
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        indexY++;
+                        if (menu[indexY, indexX] is null)
+                        {
+                            indexY--;
+                        }
+                        break;
+                    case ConsoleKey.UpArrow:
+                        indexY--;
+                        if (indexY < 0)
+                        {
+                            indexY++;
+                        }
+                        else if (menu[indexY, indexX] is null)
+                        {
+                            indexY++;
+                        }
+                        break;
                 }
+                
                 Console.Clear();
 
             } while (consoleKey != ConsoleKey.Enter);
